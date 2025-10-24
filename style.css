@@ -1,0 +1,735 @@
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(to bottom, #0f172a 0%, #581c87 50%, #0f172a 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   STICKY HEADER
+   =================================== */
+#sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    padding: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+#sticky-header.header-hidden {
+    transform: translateY(-100%);
+}
+
+#sticky-header.header-visible {
+    transform: translateY(0);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cta-button-small {
+    background: linear-gradient(to right, #f97316, #ec4899);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+}
+
+.cta-button-small:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+/* ===================================
+   HERO SECTION
+   =================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+}
+
+.hero-icon {
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #fb923c, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: #e5e7eb;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #9ca3af;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(to right, #f97316, #ec4899);
+    color: white;
+    padding: 20px 48px;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(249, 115, 22, 0.4);
+    margin-bottom: 30px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(249, 115, 22, 0.6);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #9ca3af;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.scroll-indicator p {
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   SOCIAL PROOF TICKER
+   =================================== */
+.social-proof {
+    padding: 30px 20px;
+    background: rgba(30, 41, 59, 0.5);
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    text-align: center;
+}
+
+.proof-stat {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: #fb923c;
+    font-weight: 700;
+}
+
+.proof-quote {
+    font-style: italic;
+    color: #d1d5db;
+    font-size: 1rem;
+    transition: opacity 0.5s ease;
+}
+
+/* ===================================
+   PAIN POINT SECTION
+   =================================== */
+.pain-point {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 40px;
+}
+
+.text-orange {
+    color: #fb923c;
+}
+
+.text-pink {
+    color: #ec4899;
+}
+
+.pain-list {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    text-align: left;
+}
+
+.pain-list p {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.pain-list p::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #a855f7;
+}
+
+.pain-question {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: #a855f7;
+    font-weight: 600;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   HOW IT WORKS SECTION
+   =================================== */
+.how-it-works {
+    padding: 100px 20px;
+    background: rgba(30, 41, 59, 0.3);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #9ca3af;
+    margin-bottom: 60px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.step {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+.step-emoji {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #a855f7;
+}
+
+.step p {
+    color: #d1d5db;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.cta-center {
+    text-align: center;
+}
+
+/* ===================================
+   RECENT VENTS SECTION
+   =================================== */
+.recent-vents {
+    padding: 100px 20px;
+}
+
+.vents-grid {
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.vent-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.vent-card:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
+}
+
+.vent-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.vent-emoji {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.vent-content {
+    flex: 1;
+}
+
+.vent-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.vent-category {
+    color: #a855f7;
+    font-weight: 600;
+}
+
+.vent-time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.vent-text {
+    font-size: 1.1rem;
+    color: #e5e7eb;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.vent-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.like-button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.like-button:hover {
+    background: rgba(139, 92, 246, 0.1);
+    color: #ef4444;
+}
+
+.like-button.liked {
+    color: #ef4444;
+}
+
+.like-button.liked .heart-icon {
+    fill: #ef4444;
+}
+
+.heart-icon {
+    width: 18px;
+    height: 18px;
+    transition: fill 0.2s ease;
+}
+
+.vent-comment {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #9ca3af;
+    font-size: 0.95rem;
+}
+
+.comment-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* ===================================
+   BENEFITS SECTION
+   =================================== */
+.benefits {
+    padding: 100px 20px;
+    background: rgba(30, 41, 59, 0.3);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.benefit-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.benefit-card p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* ===================================
+   FAQ SECTION
+   =================================== */
+.faq {
+    padding: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: rgba(30, 41, 59, 0.6);
+    border-left: 4px solid #a855f7;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    background: rgba(30, 41, 59, 0.8);
+    transform: translateX(10px);
+}
+
+.faq-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.faq-item p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* ===================================
+   FINAL CTA SECTION
+   =================================== */
+.final-cta {
+    padding: 120px 20px;
+    background: linear-gradient(to right, rgba(88, 28, 135, 0.5), rgba(219, 39, 119, 0.5));
+    text-align: center;
+}
+
+.cta-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.cta-subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: #e5e7eb;
+    margin-bottom: 10px;
+}
+
+.cta-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #d1d5db;
+    margin-bottom: 40px;
+}
+
+.cta-button-large {
+    display: inline-block;
+    background: linear-gradient(to right, #f97316, #ec4899);
+    color: white;
+    padding: 24px 60px;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 50px rgba(249, 115, 22, 0.5);
+    margin-bottom: 30px;
+}
+
+.cta-button-large:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(249, 115, 22, 0.7);
+}
+
+.cta-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    color: #d1d5db;
+    font-size: 0.95rem;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+footer {
+    padding: 60px 20px 40px;
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.crisis-box {
+    background: rgba(127, 29, 29, 0.3);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.crisis-box h3 {
+    color: #fca5a5;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.crisis-box p {
+    color: #d1d5db;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.crisis-text {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.footer-content {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+}
+
+.footer-love {
+    color: #a855f7;
+    font-weight: 600;
+}
+
+.footer-links a {
+    color: #a855f7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ec4899;
+    text-decoration: underline;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pain-list {
+        text-align: left;
+    }
+
+    .vent-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vent-emoji {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 16px 32px;
+        font-size: 1rem;
+    }
+
+    .cta-button-large {
+        padding: 20px 40px;
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+.text-center {
+    text-align: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
