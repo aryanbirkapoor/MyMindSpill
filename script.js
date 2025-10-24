@@ -9,7 +9,7 @@ const ventData = [
         time: "2 hours ago",
         text: "My boss called me 'lazy' in front of the whole team today. I've worked 60 hours this week. I fucking hate this job.",
         reactions: 73,
-        comment: "Happened to me. I quit."
+        
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ const ventData = [
         time: "3 hours ago",
         text: "She said she 'fell out of love.' After 3 years. No warning. How does that even happen?",
         reactions: 156,
-        comment: "Going through this now"
+       
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ const ventData = [
         time: "5 hours ago",
         text: "I'm surrounded by people but feel completely alone. Nobody actually knows me.",
         reactions: 201,
-        comment: "This is too real"
+      
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ const ventData = [
         time: "7 hours ago",
         text: "I make 'good money' but I'm broke by the 20th every month. What am I doing wrong?",
         reactions: 92,
-        comment: "Same boat, friend"
+       
     },
     {
         id: 5,
@@ -45,7 +45,7 @@ const ventData = [
         time: "9 hours ago",
         text: "I'm 26 and feel like I'm already behind. Everyone else has it figured out. I'm faking it.",
         reactions: 178,
-        comment: "We're all faking it"
+      
     }
 ];
 
@@ -156,11 +156,11 @@ function renderVents() {
                             </svg>
                             ${displayReactions}
                         </button>
-                        <div class="vent-comment">
-                            <svg class="comment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            "${vent.comment}"
+                        
+                            
+                                
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ function renderVents() {
 // INITIALIZATION
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('MyMindSpace loaded successfully!');
+    console.log('MyMindSpill loaded successfully!');
     
     // Render vents
     renderVents();
