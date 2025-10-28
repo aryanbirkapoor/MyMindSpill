@@ -11,14 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <!-- Sticky Header -->
     <header id="sticky-header" class="header-hidden">
         <div class="container">
             <div class="header-content">
                 <h1 class="logo">MyMindSpill</h1>
-                <a href="https://forms.gle/oV3FE7gAetNZgKhq9" target="_blank" rel="noopener noreferrer" class="cta-button-small">
-                    👉 VENT NOW
-                </a>
+                <button onclick="showSubmissionForm()" class="cta-button-small">
+                    👊 VENT NOW
+                </button>
             </div>
         </div>
     </header>
@@ -28,26 +29,25 @@
         <div class="container">
             <div class="hero-icon">
                 <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="url(#gradient1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <defs>
-                        <linearGradient id="gradient1" x1="3" y1="3" x2="21" y2="21">
-                            <stop offset="0%" style="stop-color:#8b5cf6"/>
+                        <linearGradient id="gradient1" x1="0" y1="0" x2="21" y2="21">
+                            <stop offset="0%" style="stop-color:#0b5cf6"/>
                             <stop offset="100%" style="stop-color:#ec4899"/>
                         </linearGradient>
                     </defs>
                 </svg>
             </div>
-            
+
             <h1 class="hero-title">
                 HAD A <span class="gradient-text">SHIT DAY?</span>
             </h1>
-            
+
             <p class="hero-subtitle">Say it here. Anonymously. Safely.</p>
             <p class="hero-description">No email. No judgment. Just truth.</p>
 
-            <a href="https://forms.gle/oV3FE7gAetNZgKhq9" target="_blank" rel="noopener noreferrer" class="cta-button">
-                👉 VENT NOW (FREE & ANONYMOUS)
-            </a>
+            <button onclick="showSubmissionForm()" class="cta-button">
+                👊 VENT NOW (FREE & ANONYMOUS)
+            </button>
 
             <div class="hero-badges">
                 <span class="badge">✓ No signup required</span>
@@ -56,8 +56,8 @@
             </div>
 
             <div class="scroll-indicator">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5V19 12M19 12L12 19L5 12"/>
                 </svg>
                 <p>See what others are saying</p>
             </div>
@@ -67,7 +67,7 @@
     <!-- Social Proof Ticker -->
     <section class="social-proof">
         <div class="container">
-            <p class="proof-stat">🔥 <span class="highlight">327 people</span> vented in the last 24 hours</p>
+            <p class="proof-stat">🔥 <span class="highlight" id="total-vents-display">327 people</span> vented in the last 24 hours</p>
             <p class="proof-quote" id="rotating-testimonial">"Finally, somewhere I can be honest without judgment"</p>
         </div>
     </section>
@@ -101,13 +101,13 @@
 
             <div class="steps">
                 <div class="step">
-                    <div class="step-emoji">📝</div>
+                    <div class="step-emoji">✍️</div>
                     <h3>1. WRITE IT</h3>
                     <p>Say what you need to say. No filter. No holding back.</p>
                 </div>
 
                 <div class="step">
-                    <div class="step-emoji">📮</div>
+                    <div class="step-emoji">📤</div>
                     <h3>2. SUBMIT IT</h3>
                     <p>Totally anonymous. No email. No name. No tracking.</p>
                 </div>
@@ -120,9 +120,9 @@
             </div>
 
             <div class="cta-center">
-                <a href="https://forms.gle/oV3FE7gAetNZgKhq9" target="_blank" rel="noopener noreferrer" class="cta-button">
-                    👉 SUBMIT YOUR VENT NOW
-                </a>
+                <button onclick="showSubmissionForm()" class="cta-button">
+                    👊 SUBMIT YOUR VENT NOW
+                </button>
             </div>
         </div>
     </section>
@@ -135,12 +135,9 @@
 
             <div class="vents-grid" id="vents-container">
                 <!-- Vents will be loaded by JavaScript -->
-            </div>
-
-            <div class="cta-center">
-                <a href="https://forms.gle/oV3FE7gAetNZgKhq9" target="_blank" rel="noopener noreferrer" class="cta-button">
-                    👉 ADD YOURS NOW
-                </a>
+                <div style="text-align: center; padding: 50px; color: #ccc; grid-column: 1/-1;">
+                    Loading vents...
+                </div>
             </div>
         </div>
     </section>
@@ -152,7 +149,7 @@
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-icon">✅</div>
                     <h3>✅ ACTUALLY ANONYMOUS</h3>
                     <p>Not "private mode." Not incognito. Actually anonymous. No email. No tracking. No data collection.</p>
                 </div>
@@ -170,7 +167,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-icon">✅</div>
                     <h3>✅ FREE FOREVER</h3>
                     <p>No paywall. No premium tier. No "buy credits to vent more." Just real support, always free.</p>
                 </div>
@@ -205,15 +202,15 @@
             <p class="cta-subtitle">You don't have to carry this alone.</p>
             <p class="cta-description">327 people vented today. Join them.</p>
 
-            <a href="https://forms.gle/oV3FE7gAetNZgKhq9" target="_blank" rel="noopener noreferrer" class="cta-button-large">
-                👉 VENT NOW (FREE & ANONYMOUS)
-            </a>
+            <button onclick="showSubmissionForm()" class="cta-button-large">
+                👊 VENT NOW (FREE & ANONYMOUS)
+            </button>
 
             <div class="cta-badges">
                 <span>Takes 30 seconds</span>
-                <span>•</span>
+                <span>✓</span>
                 <span>No signup</span>
-                <span>•</span>
+                <span>✓</span>
                 <span>Posted tomorrow</span>
             </div>
         </div>
@@ -225,21 +222,43 @@
             <div class="crisis-box">
                 <h3>⚠️ CRISIS RESOURCES</h3>
                 <p>This is peer support, NOT professional therapy or crisis intervention.</p>
-                <p class="crisis-text">🆘 <strong>If you're in crisis, please call your nearest helpline number immediately.</strong></p>
+                <p class="crisis-text">🚨 <strong>If you're in crisis, please call your nearest helpline number immediately.</strong></p>
             </div>
 
             <div class="footer-content">
                 <p>This platform is for venting and feeling heard,It is not a substitute for professional mental health care.</p>
                 <p class="footer-love">Built with ❤️ because everyone needs a place to be heard</p>
                 <p class="footer-links">
-                    © 2025 MyMindSpace • 
-                    <a href="privacy.html">Privacy</a> • 
+                    © 2025 MyMindSpace •
+                    <a href="privacy.html">Privacy</a> •
                     <a href="terms.html">Terms</a>
                 </p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+    // ======================================
+    // PASTE YOUR FIREBASE CONFIG HERE
+    // ======================================
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAyFwg8cjBKWj6cTTZ4aDJzVbKkcI4-R50",
+  authDomain: "mymindspill.firebaseapp.com",
+  projectId: "mymindspill",
+  storageBucket: "mymindspill.firebasestorage.app",
+  messagingSenderId: "949069615813",
+  appId: "1:949069615813:web:80b6edc91fc096d106d6ac"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
