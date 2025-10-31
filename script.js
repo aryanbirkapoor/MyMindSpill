@@ -101,17 +101,12 @@ function getUserId() {
 // MODERATION - BAD WORD FILTER
 // =====================================
 const bannedWords = [
-    'fuck', 'shit', 'bitch', 'asshole', 'damn', 'hell', 'cunt', 'dick', 'pussy', 
-    'bastard', 'slut', 'whore', 'fag', 'faggot', 'nigger', 'nigga', 'retard', 
-    'rape', 'kill yourself', 'kys', 'suicide', 'kill', 'murder', 'bomb', 
-    'terrorist', 'nazi', 'hitler', 'violence', 'drugs', 'cocaine', 'meth'
+    'nigger', 'nigga', 'fag', 'faggot', 'rape', 'kill yourself', 'kys', 'bomb', 'terrorist', 'nazi'
 ];
 
 function containsBadWords(text) {
     const lowerText = text.toLowerCase();
-    // Allow common swear words in vents, but block hate speech and violence
-    const blockedWords = ['nigger', 'nigga', 'fag', 'faggot', 'rape', 'kill yourself', 'kys', 'bomb', 'terrorist', 'nazi'];
-    return blockedWords.some(word => lowerText.includes(word));
+    return bannedWords.some(word => lowerText.includes(word));
 }
 
 // =====================================
@@ -440,92 +435,69 @@ function renderVents() {
                     </div>
                     <p class="vent-text">${vent.text}</p>
                     <div class="vent-actions">
-                    <button class="like-button ${hasLiked ? 'liked' : ''}" onclick="toggleLike('${vent.id}')">
-                        <svg class="comment-icon" viewBox="0 0 24 24" fill="${hasLiked ? 'currentColor' : 'none'}" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                        ${vent.reactions || 0}
-                    </button>
+                        <button class="like-button ${hasLiked ? 'liked' : ''}" onclick="toggleLike('${vent.id}')">
+                            <svg class="comment-icon" viewBox="0 0 24 24" fill="${hasLiked ? 'currentColor' : 'none'}" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            ${vent.reactions || 0}
+                        </button>
+                        
+                        <button class="comment-button" onclick="toggleComments('${vent.id}')">
+                            <svg class="comment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                            ${comments.length}
+                        </button>
+                    </div>
                     
-                    <button class="comment-button" onclick="toggleComments('${vent.id}')">
-                        <svg class="comment-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                        </svg>
-                        ${comments.length}
-                    </button>
-                </div>
-                
-                ${showComments ? `
-                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                            <input 
-                                type="text" 
-                                id="comment-input-${vent.id}"
-                                placeholder="Write a supportive comment... (3-200 chars)"
-                                style="flex: 1; padding: 12px; border-radius: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 14px;"
-                                onkeypress="if(event.key==='Enter') addComment('${vent.id}')"
-                                maxlength="200"
-                            />
-                            <button 
-                                onclick="addComment('${vent.id}')"
-                                style="padding: 12px 20px; background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; white-space: nowrap;"
-                            >
-                                Send
-                            </button>
-                        </div>
-                        
-                        ${comments.length === 0 ? `
-                            <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 14px; padding: 20px;">
-                                No comments yet. Be the first to share support! 💙
-                            </p>
-                        ` : ''}
-                        
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            ${comments.map(comment => `
-                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
-                                    <p style="margin: 0 0 8px 0; color: white; font-size: 14px; word-wrap: break-word;">${comment.text}</p>
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <span style="font-size: 12px; color: rgba(255,255,255,0.5);">${getTimeAgo(comment.timestamp)}</span>
-                                        <button 
-                                            onclick="reportComment('${vent.id}', ${comment.id})"
-                                            style="background: none; border: none; color: rgba(255,100,100,0.5); font-size: 11px; cursor: pointer; padding: 5px;"
-                                        >
-                                            🚩 Report
-                                        </button>
+                    ${showComments ? `
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <input 
+                                    type="text" 
+                                    id="comment-input-${vent.id}"
+                                    placeholder="Write a supportive comment... (3-200 chars)"
+                                    style="flex: 1; padding: 12px; border-radius: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 14px;"
+                                    onkeypress="if(event.key==='Enter') addComment('${vent.id}')"
+                                    maxlength="200"
+                                />
+                                <button 
+                                    onclick="addComment('${vent.id}')"
+                                    style="padding: 12px 20px; background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 10px; color: white; cursor: pointer; font-weight: bold; white-space: nowrap;"
+                                >
+                                    Send
+                                </button>
+                            </div>
+                            
+                            ${comments.length === 0 ? `
+                                <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 14px; padding: 20px;">
+                                    No comments yet. Be the first to share support! 💙
+                                </p>
+                            ` : ''}
+                            
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                ${comments.map(comment => `
+                                    <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px;">
+                                        <p style="margin: 0 0 8px 0; color: white; font-size: 14px; word-wrap: break-word;">${comment.text}</p>
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <span style="font-size: 12px; color: rgba(255,255,255,0.5);">${getTimeAgo(comment.timestamp)}</span>
+                                            <button 
+                                                onclick="reportComment('${vent.id}', ${comment.id})"
+                                                style="background: none; border: none; color: rgba(255,100,100,0.5); font-size: 11px; cursor: pointer; padding: 5px;"
+                                            >
+                                                🚩 Report
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            `).join('')}
+                                `).join('')}
+                            </div>
                         </div>
-                    </div>
-                ` : ''}
+                    ` : ''}
+                </div>
             </div>
-        </div>
-    `;
-    
-    container.appendChild(ventCard);
-});
-// =====================================
-// SCROLL ANIMATIONS
-// =====================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
-`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-            </div>
-        </div>
-    `;
-    
-    container.appendChild(ventCard);
+        `;
+        
+        container.appendChild(ventCard);
     });
 }
 
